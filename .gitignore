@@ -1,2 +1,4 @@
 # IDE (JetBrains) project-specific settings
 .idea
+
+.env
