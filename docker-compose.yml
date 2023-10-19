@@ -1,6 +1,9 @@
 version: "3"
 
 services:
+  frontend:
+    restart: always
+    hostname: frontend
   backend:
     restart: always
     ports:
@@ -15,7 +18,7 @@ services:
       DB_PASSWORD: ${DATABASE_PASSWORD}
     depends_on:
       - db
-
+      - frontend
   db:
     image: postgres:16-alpine
     shm_size: "2gb"

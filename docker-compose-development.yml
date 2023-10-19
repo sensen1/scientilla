@@ -1,6 +1,13 @@
 version: "3"
 
 services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ${FRONTEND_FOLDER}/Dockerfile.dev
+    volumes:
+      - ${FRONTEND_FOLDER}:/usr/app
+    command: sh -c "npm install && npm run dev"
   backend:
     build:
       context: .
