@@ -45,6 +45,22 @@ npmb|npm-backend)
   "${DOCKER_COMPOSE[@]}" run --rm backend npm "${@:2}"
   ;;
 
+restartf|restart-frontend)
+  "${DOCKER_COMPOSE[@]}" restart frontend
+  ;;
+
+logsf|logs-frontend)
+  "${DOCKER_COMPOSE[@]}" logs -f frontend
+  ;;
+
+bashf|bash-frontend)
+  "${DOCKER_COMPOSE[@]}" exec frontend /bin/sh
+  ;;
+
+npmf|npm-frontend)
+  "${DOCKER_COMPOSE[@]}" run --rm frontend npm "${@:2}"
+  ;;
+
 *)
   echo -e "${RED}Command not found ..."
   echo -e ""
