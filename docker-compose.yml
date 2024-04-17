@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   frontend:
     restart: always
@@ -16,6 +14,7 @@ services:
       DB_NAME: scientilla
       DB_USER: scientilla
       DB_PASSWORD: ${DATABASE_PASSWORD}
+      DOCKER_RUNNING: true
     depends_on:
       - db
       - frontend
