@@ -2,6 +2,32 @@
 
 source .env
 
+error_message () {
+          echo -e "${RED}Command not found ..."
+          echo -e ""
+          echo -e "${WHITE}List of commands:"
+          echo -e ""
+          echo -e "${GREEN}start                      ${WHITE}Create and start containers"
+          echo -e "${GREEN}stop                       ${WHITE}Stop running containers"
+          echo -e "${GREEN}down                       ${WHITE}Stop and remove containers & networks"
+          echo -e "${GREEN}build                      ${WHITE}Stop and remove containers & networks + build or rebuild services"
+          echo -e "${GREEN}logs                       ${WHITE}View output from containers"
+          echo -e ""
+          echo -e "${GREEN}backend restart            ${WHITE}Restart backend service container"
+          echo -e "${GREEN}backend logs               ${WHITE}View output from backend container"
+          echo -e "${GREEN}backend bash               ${WHITE}Execute /bin/sh command in backend container"
+          echo -e "${GREEN}backend npm                ${WHITE}Execute npm command in backend container"
+          echo -e "${GREEN}backend npx                ${WHITE}Execute npx command in backend container"
+          echo -e ""
+          echo -e "${GREEN}frontend restart           ${WHITE}Restart frontend service container"
+          echo -e "${GREEN}frontend logs              ${WHITE}View output from frontend container"
+          echo -e "${GREEN}frontend bash              ${WHITE}Execute /bin/sh command in frontend container"
+          echo -e "${GREEN}frontend npm               ${WHITE}Execute npm command in frontend container"
+          echo -e "${GREEN}frontend npx               ${WHITE}Execute npx command in frontend container"
+          echo -e ""
+}
+
+
 DOCKER_COMPOSE=(docker-compose --project-name "${PROJECT_NAME}" -f docker-compose.yml -f "docker-compose-${ENVIRONMENT}.yml")
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -29,42 +55,34 @@ logs)
   "${DOCKER_COMPOSE[@]}" logs -f
   ;;
 
-restartb|restart-backend)
-  "${DOCKER_COMPOSE[@]}" restart backend
-  ;;
+backend|frontend)
+    case $2 in
+      restart)
+        "${DOCKER_COMPOSE[@]}" restart $1
+        ;;
 
-logsb|logs-backend)
-  "${DOCKER_COMPOSE[@]}" logs -f backend
-  ;;
+      logs)
+        "${DOCKER_COMPOSE[@]}" logs -f $1
+        ;;
 
-bashb|bash-backend)
-  "${DOCKER_COMPOSE[@]}" exec backend /bin/sh
-  ;;
+      bash)
+        "${DOCKER_COMPOSE[@]}" exec $1 /bin/sh
+        ;;
 
-npmb|npm-backend)
-  "${DOCKER_COMPOSE[@]}" run --rm backend npm "${@:2}"
-  ;;
+      npm)
+        "${DOCKER_COMPOSE[@]}" run --rm $1 npm "${@:3}"
+        ;;
 
+      npx)
+        "${DOCKER_COMPOSE[@]}" run --rm $1 npx "${@:3}"
+        ;;
+
+      *)
+        error_message
+        ;;
+      esac
+      ;;
 *)
-  echo -e "${RED}Command not found ..."
-  echo -e ""
-  echo -e "${WHITE}List of commands:"
-  echo -e ""
-  echo -e "${GREEN}start                      ${WHITE}Create and start containers"
-  echo -e "${GREEN}stop                       ${WHITE}Stop running containers"
-  echo -e "${GREEN}down                       ${WHITE}Stop and remove containers & networks"
-  echo -e "${GREEN}build                      ${WHITE}Stop and remove containers & networks + build or rebuild services"
-  echo -e "${GREEN}logs                       ${WHITE}View output from containers"
-  echo -e ""
-  echo -e "${GREEN}restartb, restart-backend  ${WHITE}Restart backend service container"
-  echo -e "${GREEN}logsb, logs-backend        ${WHITE}View output from backend container"
-  echo -e "${GREEN}bashb, bash-backend        ${WHITE}Execute /bin/sh command in backend container"
-  echo -e "${GREEN}npmb, npm-backend          ${WHITE}Execute npm command in backend container"
-  echo -e ""
-  echo -e "${GREEN}restartf, restart-frontend ${WHITE}Restart frontend service container"
-  echo -e "${GREEN}logsf, logs-frontend       ${WHITE}View output from frontend container"
-  echo -e "${GREEN}bashf, bash-frontend       ${WHITE}Execute /bin/sh command in frontend container"
-  echo -e "${GREEN}npmf, npm-frontend         ${WHITE}Execute npm command in frontend container"
-  echo -e ""
+  error_message
   ;;
 esac
