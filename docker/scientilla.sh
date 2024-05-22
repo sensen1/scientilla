@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source .env
+source example.env
 
 error_message () {
           echo -e "${RED}Command not found ..."
@@ -28,7 +28,7 @@ error_message () {
 }
 
 
-DOCKER_COMPOSE=(docker-compose --project-name "${PROJECT_NAME}" -f docker-compose.yml -f "docker-compose-${ENVIRONMENT}.yml")
+DOCKER_COMPOSE=(docker compose --project-name "${PROJECT_NAME}" -f docker-compose.yml -f "docker-compose-${ENVIRONMENT}.yml")
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 WHITE='\033[0;37m'
