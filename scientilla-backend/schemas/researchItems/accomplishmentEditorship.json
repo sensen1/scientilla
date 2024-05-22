@@ -1,0 +1,37 @@
+{
+  "$id": "accomplishmentEditorship",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "yearFrom": {
+      "$ref": "sharedDefinitions#/definitions/year"
+    },
+    "yearTo": {
+      "oneOf": [{
+        "type": "null"
+      }, {
+        "$ref": "sharedDefinitions#/definitions/year"
+      }]
+    },
+    "source": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "integer"
+        }
+      ]
+    },
+    "role": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    }
+  }
+}

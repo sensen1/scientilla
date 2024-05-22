@@ -1,0 +1,34 @@
+{
+  "$id": "accomplishmentEventOrganisation",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "year": {
+      "$ref": "sharedDefinitions#/definitions/year"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["scientific_conference", "workshop", "school"]
+    },
+    "place": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    },
+    "description": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    }
+  }
+}

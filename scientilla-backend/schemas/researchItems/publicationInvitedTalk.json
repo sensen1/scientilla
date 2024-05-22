@@ -1,0 +1,45 @@
+{
+  "$id": "publicationInvitedTalk",
+  "type": "object",
+  "properties": {
+    "researchItemTypeId": {
+      "type": "integer"
+    },
+    "title": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    },
+    "year": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    },
+    "sourceTypeId": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "integer"
+        }
+      ]
+    },
+    "source": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    }
+  }
+}

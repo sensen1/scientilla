@@ -1,0 +1,21 @@
+{
+  "$id": "accomplishmentAward",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "year": {
+      "$ref": "sharedDefinitions#/definitions/year"
+    },
+    "issuer": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    }
+  }
+}

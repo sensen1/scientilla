@@ -1,0 +1,117 @@
+{
+  "$id": "publicationDefault",
+  "type": "object",
+  "properties": {
+    "researchItemTypeId": {
+      "type": "integer"
+    },
+    "title": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    },
+    "year": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    },
+    "issue": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    },
+    "volume": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    },
+    "pages": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    },
+    "articleNumber": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    },
+    "doi": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    },
+    "sourceTypeId": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "integer"
+        }
+      ]
+    },
+    "scopusId": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    },
+    "wosId": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    },
+    "abstract": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "string"
+        }
+      ]
+    },
+    "sourceId": {
+      "oneOf": [
+        {
+          "type": "null"
+        }, {
+          "type": "integer"
+        }
+      ]
+    }
+  }
+}
